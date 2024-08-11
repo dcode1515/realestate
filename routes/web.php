@@ -35,6 +35,11 @@ Route::get('/edit/property/{id}', [App\Http\Controllers\AdminController::class, 
 Route::post('/api/update/property', [App\Http\Controllers\AdminController::class, 'update_property'])->name('updateProperty');
 Route::delete('/property/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_property'])->name('property.delete');
 Route::get('/customer/list', [App\Http\Controllers\AdminController::class, 'customer_list'])->name('customer.list');
+Route::get('/api/approve/property/{id}', [App\Http\Controllers\AdminController::class, 'approve_property'])->name('property.edit');
+Route::delete('/customer/delete/{id}', [App\Http\Controllers\AdminController::class, 'customer_delete'])->name('customer.delete');
+Route::get('/payment', [App\Http\Controllers\AdminController::class, 'get_payment_list'])->name('get.payment');
+Route::get('/view/payment/{id}', [App\Http\Controllers\AdminController::class, 'view_payment'])->name('view.payment');
+
 
 
 /*End Admin Routes*/

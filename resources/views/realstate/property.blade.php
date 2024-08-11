@@ -259,6 +259,7 @@
                       </div>
                     </div>
                   </div>
+                
                   <div class="summary-list">
                     <ul class="list">
                       <li class="d-flex justify-content-between">
@@ -359,6 +360,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-1">
                                 <div class="form-group">
+                                      <input type="text" class="form-control" value="{{$realestate->id}}" name="property_id">
                                     <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Name *" required>
                                 </div>
                             </div>

@@ -101,13 +101,16 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
                     <i class="uil-copy-alt"></i>
-                    <span> Customer </span>
+                    <span> Customer/Tenant </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarPages">
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="{{route('customer.list')}}">Customer List</a>
+                        </li>
+                        <li>
+                            <a href="{{route('get.payment')}}">Payment</a>
                         </li>
                         <!-- <li>
                             <a href="pages-profile-2.html">Sold Property</a>

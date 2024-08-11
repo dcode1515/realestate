@@ -16,8 +16,41 @@ class AdminController extends Controller
         return view('admin.index');
     }
     public function customer_list(){
-        $customer = Customer::get();
+        $customer = Customer::with('property')->get();
         return view('admin.customer',compact('customer'));
+    }
+    public function get_payment_list(){
+        $customer = Customer::with('property')->where('status','=','Aprroved Property')->orderBy('name','desc')->get();
+        return view('admin.payment',compact('customer'));
+
+    }
+
+    public function view_payment($id){
+        $customer = Customer::with('property')->find($id);
+        return view('admin.viewpayment',compact('customer'));
+    
+
+    }
+
+
+    public function approve_property($id){
+        $customer = Customer::find($id);
+        $customer->status = "Aprroved Property";
+        $customer->save();
+        if ($customer->property) {
+            $customer->property->status = "Not Available";
+            $customer->property->save();
+        }
+        if($customer){
+            return redirect()->back()->with('success', 'Customer Approved successfully.');
+        }
+        else{
+            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        }
+
+        
+
+
     }
 
     public function property_type_list(){
@@ -51,6 +84,18 @@ class AdminController extends Controller
         }
 
     }
+
+    public function customer_delete($id){
+        $customer = Customer::find($id);
+            
+        if ($customer) {
+            $customer->delete();
+            return redirect()->back()->with('success', 'Customer deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'customer not found.');
+        }
+
+    }
     public function delete_property_type(Request $request,$id){
         {
             $property = PropertyType::find($id);
@@ -62,8 +107,12 @@ class AdminController extends Controller
                 return redirect()->back()->with('error', 'Property not found.');
             }
 }
+
     }
 
+
+
+    
     public function property(){
         $property = Property::with('property_type')->orderBy('created_at','desc')->get();
         return view('admin.property',compact('property'));

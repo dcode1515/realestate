@@ -31,9 +31,12 @@ class RealEstateController extends Controller
     public function store_customer(Request $request){
         
         $customer = new Customer;
-        $customer->name = $request->customer;
+        $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->contact_no = $request->contact_no;
+        $customer->property_id = $request->property_id;
+        $customer->status = "Pending";
+
         $customer->save();
         if ($customer) {
             return redirect()->back()->with('success', 'Customer saved successfully.');

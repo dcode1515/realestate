@@ -10,7 +10,7 @@
                                          
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Property Type List</h4>
+                                    <h4 class="page-title">Customer List</h4>
                                     @if(session('success'))
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                 {{ session('success') }}
@@ -32,7 +32,7 @@
                                     <div class="card-body">
                                         <div class="row mb-2">
                                             <div class="col-sm-4">
-                                                <a href="{{route('add.property')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Property</a>
+                                                <!-- <a href="{{route('add.property')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Property</a> -->
                                             </div>
                                             <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -40,7 +40,7 @@
                                                             @csrf
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" id="standard-modalLabel">Add Property Type</h4>
+                                                                <!-- <h4 class="modal-title" id="standard-modalLabel">Add Property Type</h4> -->
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
@@ -70,34 +70,39 @@
                                                     <tr>
                                                        
                                                         <th >#</th>
-                                                        <th >Property Type</th>
-                                                        <th >Property Name</th>
-                                                        <th >Property Address</th>
-                                                        <th>Status</th>
+                                                        <th >Property </th>
+                                                        <th >Customer Name</th>
+                                                        <th >Customer Address</th>
+                                                        <th >Customer No</th>
+                                                        <th >Status</th>
+                                                        
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($property as $key=>$data)
+                                                    @foreach($customer as $key=>$data)
                                                     <tr>
                                                         
                                                         <td>{{$key++}}  </td>
-                                                        <td>  {{$data->property_type->property_type_name}}  </td>
-                                                        <td> {{$data->property_name}} </td>
-                                                        <td> {{$data->property_address}} </td>
+                                                        <td> {{$data->property->property_name}}  </td>
+                                                        <td> {{$data->name}} </td>
+                                                        <td> {{$data->email}} </td>
+                                                        <td> {{$data->contact_no}} </td>
                                                         <td> {{$data->status}} </td>
                                                      
                                                         <td class="table-action">
-                                                        <a href="/realestate/edit/property/{{ $data->id }}" class="action-icon">
+                                                        <a href="{{ route('view.payment', ['id' => $data->id]) }}" class="action-icon">
                                                             <i class="mdi mdi-square-edit-outline"></i>
                                                         </a>
-                                                        <form action="{{ route('property.delete', ['id' => $data->id]) }}" method="POST" id="delete-form-{{ $data->id }}">
+                                                        @if($data->status=='Pending')
+                                                        <form action="{{ route('customer.delete', ['id' => $data->id]) }}" method="POST" id="delete-form-{{ $data->id }}">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="action-icon delete-property" onclick="return confirm('Are you sure you want to delete this property?');">
+                                                                <button type="submit" class="action-icon delete-property" onclick="return confirm('Are you sure you want to delete this Customer?');">
                                                                     <i class="mdi mdi-delete"></i>
                                                                 </button>
                                                             </form>
+                                                            @endif
 
 
 
@@ -106,11 +111,10 @@
 
                                                     <div id="standard-modal1{{$data->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
-                                                        <form action="{{route('updatetype')}}" method="POST">
-                                                            @csrf
+                                                       
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" id="standard-modalLabel">Add Property Type</h4>
+                                                              
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
@@ -124,7 +128,7 @@
                                                             </div>
                                                         </div><!-- /.modal-content -->
                                                     </div><!-- /.modal-dialog -->
-                                                    </form>
+                                                   
                                                 </div><!-- /.modal -->
                                           
                                         </div>

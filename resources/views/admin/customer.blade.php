@@ -74,7 +74,8 @@
                                                         <th >Customer Name</th>
                                                         <th >Customer Address</th>
                                                         <th >Customer No</th>
-                                                        <th>Created At</th>
+                                                        <th >Status</th>
+                                                        
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -83,23 +84,25 @@
                                                     <tr>
                                                         
                                                         <td>{{$key++}}  </td>
-                                                        <td> {{$data->property_name}}  </td>
+                                                        <td> {{$data->property->property_name}}  </td>
                                                         <td> {{$data->name}} </td>
                                                         <td> {{$data->email}} </td>
                                                         <td> {{$data->contact_no}} </td>
-                                                        <td> {{$data->created_at}} </td>
+                                                        <td> {{$data->status}} </td>
                                                      
                                                         <td class="table-action">
-                                                        <a href="/realestate/edit/property/{{ $data->id }}" class="action-icon">
+                                                        <a href="{{ route('property.edit', ['id' => $data->id]) }}" class="action-icon">
                                                             <i class="mdi mdi-square-edit-outline"></i>
                                                         </a>
-                                                        <form action="{{ route('property.delete', ['id' => $data->id]) }}" method="POST" id="delete-form-{{ $data->id }}">
+                                                        @if($data->status=='Pending')
+                                                        <form action="{{ route('customer.delete', ['id' => $data->id]) }}" method="POST" id="delete-form-{{ $data->id }}">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="action-icon delete-property" onclick="return confirm('Are you sure you want to delete this property?');">
+                                                                <button type="submit" class="action-icon delete-property" onclick="return confirm('Are you sure you want to delete this Customer?');">
                                                                     <i class="mdi mdi-delete"></i>
                                                                 </button>
                                                             </form>
+                                                            @endif
 
 
 
