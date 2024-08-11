@@ -39,6 +39,7 @@ Route::get('/api/approve/property/{id}', [App\Http\Controllers\AdminController::
 Route::delete('/customer/delete/{id}', [App\Http\Controllers\AdminController::class, 'customer_delete'])->name('customer.delete');
 Route::get('/payment', [App\Http\Controllers\AdminController::class, 'get_payment_list'])->name('get.payment');
 Route::get('/view/payment/{id}', [App\Http\Controllers\AdminController::class, 'view_payment'])->name('view.payment');
+Route::post('/api/store/payment', [App\Http\Controllers\AdminController::class, 'store_payment'])->name('store.payment');
 
 
 

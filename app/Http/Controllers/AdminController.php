@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PropertyType;
 use App\Models\Property;
 use App\Models\Customer;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 class AdminController extends Controller
@@ -25,9 +26,31 @@ class AdminController extends Controller
 
     }
 
+
+    public function store_payment(Request $request){
+      
+
+        $payment = new Payment();
+        $payment->property_id = $request->property_id;
+        $payment->customer_id = $request->customer_id;
+        $payment->amount = $request->amount;
+        $payment->days = $request->days;
+        $payment->status = "PAID";
+        if ($payment->save()) {
+            return redirect()->back()->with('success', 'Payment saved successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to save Payment.');
+        }
+
+        
+    }
+
+
     public function view_payment($id){
-        $customer = Customer::with('property')->find($id);
-        return view('admin.viewpayment',compact('customer'));
+        $customer = Customer::find($id);
+        $property = Property::where('id','=',$customer->id)->first();
+       
+        return view('admin.viewpayment',compact('customer','property'));
     
 
     }
