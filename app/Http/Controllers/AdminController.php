@@ -21,7 +21,7 @@ class AdminController extends Controller
         return view('admin.customer',compact('customer'));
     }
     public function get_payment_list(){
-        $customer = Customer::with('property')->where('status','=','Aprroved Property')->orderBy('name','desc')->get();
+        $customer = Payment::with('property')->with('customer')->where('status','=','Aprroved Property')->orderBy('name','desc')->get();
         return view('admin.payment',compact('customer'));
 
     }
@@ -158,6 +158,8 @@ class AdminController extends Controller
             'image2' => 'image|mimes:jpeg,png',
             'image3' => 'image|mimes:jpeg,png',
             'image4' => 'image|mimes:jpeg,png',
+            'image5' => 'image|mimes:jpeg,png',
+            'image6' => 'image|mimes:jpeg,png',
         ];
 
         $messages = [
@@ -201,7 +203,7 @@ class AdminController extends Controller
         // Save the property
        
         // Upload images
-        $images = ['image1', 'image2', 'image3', 'image4'];
+        $images = ['image1', 'image2', 'image3', 'image4','image5','image6'];
         foreach ($images as $imageField) {
             if ($request->hasFile($imageField)) {
                 $now = Carbon::now();

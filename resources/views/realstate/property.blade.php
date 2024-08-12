@@ -146,7 +146,7 @@
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link " href="index.html">Home</a>
           </li>
 
@@ -160,9 +160,9 @@
 
           <li class="nav-item">
             <a class="nav-link " href="blog-grid.html">Blog</a>
-          </li>
+          </li> -->
 
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
             <div class="dropdown-menu">
               <a class="dropdown-item active" href="property-single.html">Property Single</a>
@@ -170,16 +170,16 @@
               <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
               <a class="dropdown-item " href="agent-single.html">Agent Single</a>
             </div>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link " href="contact.html">Contact</a>
-          </li>
+          </li> -->
         </ul>
       </div>
 
-      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+      <!-- <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
         <i class="bi bi-search"></i>
-      </button>
+      </button> -->
 
     </div>
   </nav><!-- End Header/Navbar -->
@@ -225,10 +225,19 @@
                   <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image1) }}" alt="">
                 </div>
                 <div class="carousel-item-b swiper-slide">
-                <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image2) }}" alt="">
+                 <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image2) }}" alt="">
                 </div>
                 <div class="carousel-item-b swiper-slide">
                 <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image3) }}" alt="">
+                </div>
+                <div class="carousel-item-b swiper-slide">
+                <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image4) }}" alt="">
+                </div>
+                <div class="carousel-item-b swiper-slide">
+                <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image5) }}" alt="">
+                </div>
+                <div class="carousel-item-b swiper-slide">
+                <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image6) }}" alt="">
                 </div>
               </div>
             </div>
@@ -247,7 +256,7 @@
                       <span class="bi bi-cash">PHP</span>
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">{{$realestate->monthlyrate}}</h5>
+                      <h5 class="title-c">{{$realestate->price}}</h5>
                     </div>
                   </div>
                 </div>
@@ -279,8 +288,8 @@
                         <span>{{$realestate->status}}</span>
                       </li>
                       <li class="d-flex justify-content-between">
-                        <strong>Area:</strong>
-                        <span>{{$realestate->sq}}
+                        <strong>Square Meter:</strong>
+                        <span>{{$realestate->square_meter}}
                          
                         </span>
                       </li>
@@ -288,14 +297,14 @@
                         <strong>Bedrooms:</strong>
                         <span>{{$realestate->bedrooms}}</span>
                       </li>
-                      <li class="d-flex justify-content-between">
+                      <!-- <li class="d-flex justify-content-between">
                         <strong>Bathroom:</strong>
                         <span>{{$realestate->bath}}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Car Park</strong>
                         <span>{{$realestate->carpark}}</span>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>
@@ -360,7 +369,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-1">
                                 <div class="form-group">
-                                      <input type="text" class="form-control" value="{{$realestate->id}}" name="property_id">
+                                      <input type="text" class="form-control" value="{{$realestate->id}}" name="property_id" hidden>
                                     <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Name *" required>
                                 </div>
                             </div>

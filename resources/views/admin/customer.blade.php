@@ -91,7 +91,7 @@
                                                         <td> {{$data->status}} </td>
                                                      
                                                         <td class="table-action">
-                                                        <a href="{{ route('property.edit', ['id' => $data->id]) }}" class="action-icon">
+                                                        <a href="{{ route('view.payment', ['id' => $data->id]) }}" class="action-icon">
                                                             <i class="mdi mdi-square-edit-outline"></i>
                                                         </a>
                                                         @if($data->status=='Pending')

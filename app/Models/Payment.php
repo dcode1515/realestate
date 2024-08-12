@@ -22,5 +22,11 @@ class Payment extends Model
      
        
 	];
+    public function property(){
+        return $this->belongsTo('App\Models\Property','property_id','id');
+    }
+    public function customer(){
+        return $this->belongsTo('App\Models\Property','customer_id','id');
+    }
 
 }

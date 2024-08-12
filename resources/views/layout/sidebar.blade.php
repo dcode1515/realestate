@@ -1,7 +1,7 @@
 <div class="leftside-menu">
     
     <!-- LOGO -->
-    <a href="index.html" class="logo text-center logo-light">
+    <a href="{{route('property')}}" class="logo text-center logo-light">
         <span class="logo-lg">
             <img src="{{ URL::asset('public/images/logo.png') }}" alt="" height="50">
         </span>
@@ -110,7 +110,7 @@
                             <a href="{{route('customer.list')}}">Customer List</a>
                         </li>
                         <li>
-                            <a href="{{route('get.payment')}}">Payment</a>
+                            <a href="{{route('get.payment')}}">Aproved Payment</a>
                         </li>
                         <!-- <li>
                             <a href="pages-profile-2.html">Sold Property</a>

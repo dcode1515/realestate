@@ -121,8 +121,16 @@
                                                             <label for="projectname" class="form-label">Image 4</label>
                                                             <input type="file" name="image4" class="form-control">
                                                         </div>
-                                             
+                                                        <div class="mb-3">
+                                                            <label for="projectname" class="form-label">Image 5</label>
+                                                            <input type="file" name="image5" class="form-control">
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="projectname" class="form-label">Image 6</label>
+                                                            <input type="file" name="image6" class="form-control">
+                                                        </div>
+                                             
+                                                    </div>
                                                   
                                                 </div>
 
