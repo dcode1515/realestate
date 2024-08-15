@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('admin.index');
     }
     public function customer_list(){
-        $customer = Customer::with('property')->get();
+        $customer = Customer::with('property')->where('status','=','Aprroved Property')->get();
         return view('admin.customer',compact('customer'));
     }
     public function get_payment_list(){
@@ -36,11 +36,19 @@ class AdminController extends Controller
         $payment->amount = $request->amount;
         $payment->days = $request->days;
         $payment->status = "PAID";
-        if ($payment->save()) {
-            return redirect()->back()->with('success', 'Payment saved successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Failed to save Payment.');
-        }
+         // Save the payment
+            if ($payment->save()) {
+                // Update the customer's status to "Unavailable"
+                $customer = Customer::find($request->customer_id);
+                if ($customer) {
+                    $customer->status = "Unavailable";
+                    $customer->save();
+                }
+
+                return redirect()->back()->with('success', 'Payment saved and customer status updated successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Failed to save Payment.');
+            }
 
         
     }

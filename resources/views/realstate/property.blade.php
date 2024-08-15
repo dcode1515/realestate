@@ -228,7 +228,7 @@
                  <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image2) }}" alt="">
                 </div>
                 <div class="carousel-item-b swiper-slide">
-                <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image3) }}" alt="">
+                  <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image3) }}" alt="">
                 </div>
                 <div class="carousel-item-b swiper-slide">
                 <img src="{{ asset('public/attachment/Property/' . $realestate->property_no.'/'.$realestate->image4) }}" alt="">
